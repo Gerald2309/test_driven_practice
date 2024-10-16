@@ -1,38 +1,55 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+
+public class FizzBuzzTest {
+
+    private FizzBuzz game;
+
+    //Función que se ejecuta siempre antes de los test
+    @Before
+    public void before() {
+        game = new FizzBuzz();
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    public void should_returnNumbers_whenNotAMultipleOf3Or5() {
+        List<String> numbers = game.getNumbers(30);
+        Assert.assertEquals("1", numbers.get(0));
+        Assert.assertEquals("2", numbers.get(1));
+        Assert.assertEquals("4", numbers.get(3));
+
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void should_return_Fizz_when_multipleOf3() {
+        List<String> numbers = game.getNumbers(30);
+        Assert.assertEquals("Fizz", numbers.get(2));
+        Assert.assertEquals("Fizz", numbers.get(5));
+
     }
+
+    @Test
+    public void should_return_Buzz_when_multipleOf5() {
+        List<String> numbers = game.getNumbers(21);
+        Assert.assertEquals("Buzz", numbers.get(4));
+        Assert.assertEquals("Buzz", numbers.get(9));
+      //  Assert.assertEquals("Buzz", numbers.get(14));
+        Assert.assertEquals("Buzz", numbers.get(19));
+
+
+    }
+
+    @Test
+    public void should_return_FizzBuzz_when_multipleOf3And5() {
+        List<String> numbers = game.getNumbers(20);
+        Assert.assertEquals("FizzBuzz", numbers.get(14));
+    }
+
+
 }
