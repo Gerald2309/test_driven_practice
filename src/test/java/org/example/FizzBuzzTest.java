@@ -9,6 +9,8 @@ import java.util.List;
 
 public class FizzBuzzTest {
 
+    public static final String FIZZ = "Fizz";
+    public static final String BUZZ = "Buzz";
     private FizzBuzz game;
 
     //Función que se ejecuta siempre antes de los test
@@ -29,18 +31,17 @@ public class FizzBuzzTest {
     @Test
     public void should_return_Fizz_when_multipleOf3() {
         List<String> numbers = game.getNumbers(30);
-        Assert.assertEquals("Fizz", numbers.get(2));
-        Assert.assertEquals("Fizz", numbers.get(5));
+        Assert.assertEquals(FIZZ, numbers.get(2));
+        Assert.assertEquals(FIZZ, numbers.get(5));
 
     }
 
     @Test
     public void should_return_Buzz_when_multipleOf5() {
         List<String> numbers = game.getNumbers(21);
-        Assert.assertEquals("Buzz", numbers.get(4));
-        Assert.assertEquals("Buzz", numbers.get(9));
-      //  Assert.assertEquals("Buzz", numbers.get(14));
-        Assert.assertEquals("Buzz", numbers.get(19));
+        Assert.assertEquals(BUZZ, numbers.get(4));
+        Assert.assertEquals(BUZZ, numbers.get(9));
+        Assert.assertEquals(BUZZ, numbers.get(19));
 
 
     }
@@ -48,7 +49,7 @@ public class FizzBuzzTest {
     @Test
     public void should_return_FizzBuzz_when_multipleOf3And5() {
         List<String> numbers = game.getNumbers(20);
-        Assert.assertEquals("FizzBuzz", numbers.get(14));
+        Assert.assertEquals(FIZZ + BUZZ, numbers.get(14));
     }
 
 
